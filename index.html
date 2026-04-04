@@ -214,47 +214,57 @@
     <section style="background:#fff; padding:2rem; border-radius:16px; box-shadow:0 4px 15px rgba(0,0,0,0.08); max-width:700px; margin:0 auto 3rem;">
       <h2 style="text-align:center;">Datos para transferir</h2>
       <p style="text-align:center; font-size:1.15rem; margin:1.5rem 0;">
-        <strong>RUT:</strong> [150251427]<br>
-        <strong>Nombre:</strong> [Ayleen Barahona Olivares]<br>
+        <strong>RUT:</strong> 150251427<br>
+        <strong>Nombre:</strong> Ayleen Barahona Olivares<br>
         <strong>Número de teléfono:</strong> +56 9 3927 6187<br>
-        <strong>Banco:</strong> [Banco Falabella]<br>
-        <strong>Tipo de cuenta:</strong> [Cuenta Corriente]<br>
-        <strong>Número de cuenta:</strong> [019843395912]
+        <strong>Banco:</strong> Banco Falabella<br>
+        <strong>Tipo de cuenta:</strong> Cuenta Corriente<br>
+        <strong>Número de cuenta:</strong> 019843395912
       </p>
       <p style="text-align:center; color:#d32f2f; font-weight:600;">
         Una vez realizada la transferencia, envía el pantallazo por WhatsApp.
       </p>
     </section>
 
-    <!-- Formulario -->
+    <!-- Formulario ACTUALIZADO con opción Efectivo o Transferencia -->
     <section class="form-section">
       <h2>¡Participa en la rifa!</h2>
-      <p style="text-align:center; margin-bottom:1.5rem; font-size:1.1rem; line-height:1.6;">
-        Transfiere $1.000 por cada número que quieras.<br><br>
-        <strong>IMPORTANTE:</strong><br>
-        Envía el pantallazo del comprobante (PNG) directamente por WhatsApp a CrazyMangu haciendo clic en el botón de abajo.<br>
-        <strong>Sin el comprobante enviado por WhatsApp no podrás participar.</strong>
+      <p style="text-align:center; margin-bottom:1.8rem; font-size:1.12rem; line-height:1.6;">
+        Cada número cuesta <strong>$1.000 CLP</strong>.<br><br>
+        Puedes pagar en <strong>efectivo</strong> (con un vendedor del curso) o por <strong>transferencia bancaria</strong>.
       </p>
       
-      <div style="text-align:center; margin:2rem 0;">
+      <!-- Botón WhatsApp destacado -->
+      <div style="text-align:center; margin:2.5rem 0;">
         <a href="https://wa.me/56939276187" target="_blank" 
-           style="display:inline-block; background:#25D366; color:white; padding:16px 32px; border-radius:50px; text-decoration:none; font-weight:600; font-size:1.2rem;">
+           style="display:inline-block; background:#25D366; color:white; padding:16px 36px; border-radius:50px; text-decoration:none; font-weight:600; font-size:1.25rem; box-shadow: 0 4px 15px rgba(37,211,102,0.3);">
           📲 Enviar comprobante por WhatsApp
         </a>
       </div>
 
       <form action="https://formsubmit.co/crazymangu2026@gmail.com" method="POST">
         <label for="nombre">Nombre completo</label>
-        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre...">
+        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo...">
 
         <label for="rut">RUT</label>
         <input type="text" id="rut" name="rut" required placeholder="Ej: 12.345.678-9">
 
-        <label for="telefono">Teléfono</label>
+        <label for="telefono">Teléfono / WhatsApp</label>
         <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +56 9 1234 5678">
 
-        <label for="numeros">Cantidad de números o números elegidos</label>
-        <input type="text" id="numeros" name="numeros" required placeholder="Ej: 5 números o números 12, 45, 67">
+        <label for="numeros">Cantidad de números</label>
+        <input type="text" id="numeros" name="numeros" required placeholder="Ej: 5 números">
+
+        <label for="metodo_pago">¿Cómo vas a pagar?</label>
+        <select id="metodo_pago" name="metodo_pago" required>
+          <option value="">Selecciona una opción</option>
+          <option value="Efectivo">💵 Efectivo (a un vendedor del curso)</option>
+          <option value="Transferencia">🏦 Transferencia bancaria</option>
+        </select>
+
+        <label for="comprobante">Comprobante o comentario (opcional)</label>
+        <textarea id="comprobante" name="comprobante" rows="3" 
+                  placeholder="Si pagaste por transferencia, escribe el número de operación o pega el enlace del pantallazo. Si pagaste en efectivo, puedes dejarlo en blanco."></textarea>
 
         <input type="hidden" name="_subject" value="Nueva participación Rifa Gira Brasil - CrazyMangu">
         <input type="hidden" name="_captcha" value="false">
@@ -292,17 +302,19 @@
       </ul>
       <p style="margin-top:2rem;">Todo el curso agradece tu apoyo para hacer posible esta gira de estudio.</p>
     </section>
+
+    <!-- Botones a subpáginas -->
     <div style="text-align: center; margin: 30px 0 40px 0; padding: 0 20px;">
-    <a href="como-participar/" 
-       style="display: block; background: #3498db; color: white; padding: 16px 20px; text-decoration: none; border-radius: 12px; font-size: 1.1em; margin-bottom: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        📋 Cómo Participar (detallado)
-    </a>
-    
-    <a href="como-vender/" 
-       style="display: block; background: #27ae60; color: white; padding: 16px 20px; text-decoration: none; border-radius: 12px; font-size: 1.1em; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        👥 Manual para Vendedores (compañeros)
-    </a>
-</div>
+      <a href="como-participar/" 
+         style="display: block; background: #3498db; color: white; padding: 16px 20px; text-decoration: none; border-radius: 12px; font-size: 1.1em; margin-bottom: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          📋 Cómo Participar (detallado)
+      </a>
+      
+      <a href="como-vender/" 
+         style="display: block; background: #27ae60; color: white; padding: 16px 20px; text-decoration: none; border-radius: 12px; font-size: 1.1em; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          👥 Manual para Vendedores (compañeros)
+      </a>
+    </div>
 
   </main>
 
