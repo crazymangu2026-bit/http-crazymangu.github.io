@@ -272,6 +272,161 @@
       border-top: 1px solid var(--gray-light);
       color: var(--gray);
     }
+    /* ==================== CHATBOT MANGOLANGO ==================== */
+.mango-bubble {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 68px;
+  height: 68px;
+  background: linear-gradient(135deg, #ff9800, #ff6b00);
+  border-radius: 50%;
+  box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99999;
+  font-size: 38px;
+  transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  border: 4px solid #fff;
+}
+
+.mango-bubble:hover {
+  transform: scale(1.12) rotate(12deg);
+  box-shadow: 0 12px 35px rgba(255, 152, 0, 0.5);
+}
+
+.chat-window {
+  position: fixed;
+  bottom: 105px;
+  right: 25px;
+  width: 380px;
+  max-height: 520px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  z-index: 100000;
+  border: 3px solid #ff9800;
+}
+
+.chat-window.open {
+  display: flex;
+  animation: popIn 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.chat-header {
+  background: linear-gradient(90deg, #ff9800, #ff6b00);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.chat-header .cat-avatar {
+  width: 42px;
+  height: 42px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.chat-header .close-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+  line-height: 1;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f8f4ee;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-body::-webkit-scrollbar-thumb {
+  background: #ff9800;
+  border-radius: 20px;
+}
+
+.message {
+  max-width: 80%;
+  padding: 12px 18px;
+  border-radius: 20px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+.message.bot {
+  align-self: flex-start;
+  background: #fff;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #ff9800;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-footer {
+  padding: 12px;
+  background: #fff;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 8px;
+}
+
+.chat-footer input {
+  flex: 1;
+  border: 2px solid #eee;
+  border-radius: 30px;
+  padding: 14px 20px;
+  font-size: 1.05rem;
+}
+
+.chat-footer button {
+  background: #ff9800;
+  color: white;
+  border: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
   </style>
 </head>
 <body>
@@ -451,7 +606,31 @@
     <p>¿Dudas o problemas? Contáctanos por WhatsApp: <a href="https://wa.me/56939276187">+56 9 3927 6187</a></p>
     <p style="margin-top:1rem;">© 2026 CrazyMangu - Todos los derechos reservados</p>
   </footer>
+<!-- ==================== CHATBOT MANGOLANGO ==================== -->
+<!-- Burbuja flotante -->
+<div class="mango-bubble" id="mango-bubble" title="¡Habla con MangoLango! 🐱">
+</div>
 
+<!-- Ventana del chat -->
+<div class="chat-window" id="chat-window">
+  <div class="chat-header">
+    <div class="cat-avatar">🐱</div>
+    <div>MangoLango</div>
+    <button class="close-btn" id="close-chat">✕</button>
+  </div>
+  
+  <div class="chat-body" id="chat-body">
+    <div class="message bot">
+      ¡Miau! 🐱 Soy <strong>MangoLango</strong>, el gato naranja oficial de CrazyMangu.<br>
+      ¿Quieres saber sobre la rifa, los premios, cómo participar o la gira a Brasil? ¡Pregúntame lo que quieras!
+    </div>
+  </div>
+  
+  <div class="chat-footer">
+    <input type="text" id="chat-input" placeholder="Escribe tu pregunta..." autocomplete="off">
+    <button id="send-btn">🐾</button>
+  </div>
+</div>
   <script>
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('mobile-menu');
@@ -478,5 +657,96 @@
       });
     });
   </script>
+  <script>
+  // ==================== SCRIPT DEL CHATBOT MANGOLANGO ====================
+  const bubble = document.getElementById('mango-bubble');
+  const chatWindow = document.getElementById('chat-window');
+  const chatBody = document.getElementById('chat-body');
+  const input = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('send-btn');
+  const closeBtn = document.getElementById('close-chat');
+
+  function getBotResponse(message) {
+    const msg = message.toLowerCase().trim();
+
+    if (msg.includes('hola') || msg.includes('buenos') || msg.includes('qué tal')) {
+      return "¡Miau! 🐱 Hola humano, soy MangoLango. ¿Listo para ayudar a que el curso 1° Medio B llegue a Brasil?";
+    }
+    if (msg.includes('precio') || msg.includes('cuesta') || msg.includes('valor') || msg.includes('1000')) {
+      return "Cada número de la rifa cuesta **$1.000 CLP**. ¡Mientras más números compres, más chances de ganar el JBL Go 3!";
+    }
+    if (msg.includes('premio') || msg.includes('jbl') || msg.includes('principal')) {
+      return "🏆 **Premio Principal**: JBL Go 3 impermeable + Set de toallas.<br><br>Además hay muchos premios adicionales: Giftcard $20.000, Kit de aseo, Spa, Completos, Ollas, Palomera, Termo Stanley, AirPods, Teclado + mouse… ¡y más!";
+    }
+    if (msg.includes('cómo participo') || msg.includes('participar') || msg.includes('comprar')) {
+      return "Fácil 🐱:<br>1. Paga por transferencia (datos más abajo) o en efectivo a un vendedor del curso.<br>2. Envía el comprobante por WhatsApp al +56 9 3927 6187.<br>3. ¡Listo! Recibirás tus números por mensaje.";
+    }
+    if (msg.includes('transferencia') || msg.includes('datos') || msg.includes('banco') || msg.includes('rut')) {
+      return "Datos para transferir:<br><strong>Nombre:</strong> Vicente Moreno<br><strong>RUT:</strong> 23.568.213-3<br><strong>Banco:</strong> BCI Mach<br><strong>Tipo:</strong> Cuenta Corriente<br><strong>N° cuenta:</strong> 777923568213<br><strong>Correo:</strong> crazymangu2026@gmail.com<br><br>¡Envía pantallazo por WhatsApp!";
+    }
+    if (msg.includes('gira') || msg.includes('brasil') || msg.includes('viaje')) {
+      return "Vamos a la gira de estudio a **Brasil** 🇧🇷 con todo el curso 1° Medio B del Colegio Nahuelcura. ¡Tu compra nos ayuda a hacer realidad este sueño!";
+    }
+    if (msg.includes('quién eres') || msg.includes('mango') || msg.includes('lango')) {
+      return "Soy MangoLango 🐱, el gato naranja de CrazyMangu. Vicente me creó para ayudarte en esta rifa y responder todas tus dudas 24/7.";
+    }
+    if (msg.includes('cómo vender') || msg.includes('vendedor')) {
+      return "¡Para compañeros que venden! Ve a la página <a href='como-vender/' style='color:#ff9800'>👥 Manual para Vendedores</a>. Ahí está todo explicado paso a paso.";
+    }
+    if (msg.includes('términos') || msg.includes('condiciones')) {
+      return "Revisa los <a href='terminos/' style='color:#ff9800'>📜 Términos y Condiciones</a> completos aquí.";
+    }
+    if (msg.includes('gracias') || msg.includes('thank')) {
+      return "¡De nada! Gracias a ti el curso va a Brasil. 🐱❤️";
+    }
+
+    return "¡Miau! 🐱 No entendí del todo esa pregunta. Prueba preguntándome sobre:<br>• Precio de los números<br>• Premios<br>• Cómo participar<br>• Datos de transferencia<br>• La gira a Brasil<br><br>¿Qué más quieres saber?";
+  }
+
+  function addMessage(text, type) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${type}`;
+    msgDiv.innerHTML = text;
+    chatBody.appendChild(msgDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    input.value = '';
+
+    setTimeout(() => {
+      const botReply = getBotResponse(text);
+      addMessage(botReply, 'bot');
+    }, 650);
+  }
+
+  // Eventos
+  bubble.addEventListener('click', () => {
+    chatWindow.classList.add('open');
+    bubble.style.display = 'none';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    chatWindow.classList.remove('open');
+    bubble.style.display = 'flex';
+  });
+
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  // Cerrar si se hace clic fuera
+  document.addEventListener('click', (e) => {
+    if (!chatWindow.contains(e.target) && e.target !== bubble && chatWindow.classList.contains('open')) {
+      chatWindow.classList.remove('open');
+      bubble.style.display = 'flex';
+    }
+  });
+</script>
 </body>
 </html>
