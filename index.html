@@ -272,143 +272,113 @@
       border-top: 1px solid var(--gray-light);
       color: var(--gray);
     }
-    /* ==================== CHATBOT MANGOLANGO ==================== */
+  /* ==================== MANGOLANGO - GATO CON SENTIMIENTOS ==================== */
 .mango-bubble {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  width: 68px;
-  height: 68px;
-  background: linear-gradient(135deg, #ff9800, #ff6b00);
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #ff9800, #ff5722);
   border-radius: 50%;
-  box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(255, 152, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 99999;
-  font-size: 38px;
-  transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  border: 4px solid #fff;
+  font-size: 42px;
+  transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  border: 5px solid #fff;
 }
 
 .mango-bubble:hover {
-  transform: scale(1.12) rotate(12deg);
-  box-shadow: 0 12px 35px rgba(255, 152, 0, 0.5);
+  transform: scale(1.15) rotate(15deg);
 }
 
 .chat-window {
   position: fixed;
-  bottom: 105px;
+  bottom: 110px;
   right: 25px;
-  width: 380px;
-  max-height: 520px;
+  width: 390px;
+  max-height: 560px;
   background: #fff;
-  border-radius: 22px;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   overflow: hidden;
   display: none;
   flex-direction: column;
   z-index: 100000;
-  border: 3px solid #ff9800;
+  border: 4px solid #ff9800;
 }
 
-.chat-window.open {
-  display: flex;
-  animation: popIn 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-}
-
-@keyframes popIn {
-  0% { transform: scale(0.7); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
+.chat-window.open { display: flex; }
 
 .chat-header {
-  background: linear-gradient(90deg, #ff9800, #ff6b00);
+  background: linear-gradient(90deg, #ff9800, #ff5722);
   color: white;
-  padding: 16px 20px;
+  padding: 18px 20px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
 
 .chat-header .cat-avatar {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   background: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
-  flex-shrink: 0;
-}
-
-.chat-header .close-btn {
-  margin-left: auto;
-  background: none;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: #fff;
-  line-height: 1;
-}
-
-.chat-body {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background: #f8f4ee;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.chat-body::-webkit-scrollbar {
-  width: 6px;
-}
-
-.chat-body::-webkit-scrollbar-thumb {
-  background: #ff9800;
-  border-radius: 20px;
+  font-size: 32px;
 }
 
 .message {
-  max-width: 80%;
-  padding: 12px 18px;
+  max-width: 85%;
+  padding: 14px 18px;
   border-radius: 20px;
-  font-size: 1.05rem;
-  line-height: 1.5;
-  position: relative;
+  font-size: 1.06rem;
+  line-height: 1.55;
 }
 
 .message.bot {
   align-self: flex-start;
-  background: #fff;
-  border-bottom-left-radius: 4px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  background: #fff9f0;
+  border-bottom-left-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .message.user {
   align-self: flex-end;
   background: #ff9800;
   color: white;
-  border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 6px;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #fffaf0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .chat-footer {
-  padding: 12px;
+  padding: 14px;
   background: #fff;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #ffe0b2;
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .chat-footer input {
   flex: 1;
-  border: 2px solid #eee;
+  border: 2px solid #ffcc80;
   border-radius: 30px;
   padding: 14px 20px;
   font-size: 1.05rem;
@@ -418,14 +388,11 @@
   background: #ff9800;
   color: white;
   border: none;
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  font-size: 24px;
+  font-size: 26px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
   </style>
 </head>
@@ -606,28 +573,22 @@
     <p>¿Dudas o problemas? Contáctanos por WhatsApp: <a href="https://wa.me/56939276187">+56 9 3927 6187</a></p>
     <p style="margin-top:1rem;">© 2026 CrazyMangu - Todos los derechos reservados</p>
   </footer>
-<!-- ==================== CHATBOT MANGOLANGO ==================== -->
-<!-- Burbuja flotante -->
-<div class="mango-bubble" id="mango-bubble" title="¡Habla con MangoLango! 🐱">
-</div>
+<!-- ==================== MANGOLANGO - GATO CON SENTIMIENTOS ==================== -->
+<div class="mango-bubble" id="mango-bubble" title="¡Habla con MangoLango! 🐱">🐱</div>
 
-<!-- Ventana del chat -->
 <div class="chat-window" id="chat-window">
   <div class="chat-header">
     <div class="cat-avatar">🐱</div>
     <div>MangoLango</div>
-    <button class="close-btn" id="close-chat">✕</button>
+    <button class="close-btn" id="close-chat" style="margin-left:auto; background:none; border:none; font-size:28px; color:white; cursor:pointer;">✕</button>
   </div>
   
   <div class="chat-body" id="chat-body">
-    <div class="message bot">
-      ¡Miau! 🐱 Soy <strong>MangoLango</strong>, el gato naranja oficial de CrazyMangu.<br>
-      ¿Quieres saber sobre la rifa, los premios, cómo participar o la gira a Brasil? ¡Pregúntame lo que quieras!
-    </div>
+    <!-- Mensajes se agregan automáticamente -->
   </div>
   
   <div class="chat-footer">
-    <input type="text" id="chat-input" placeholder="Escribe tu pregunta..." autocomplete="off">
+    <input type="text" id="chat-input" placeholder="Pregúntame lo que quieras... 🐾" autocomplete="off">
     <button id="send-btn">🐾</button>
   </div>
 </div>
@@ -657,96 +618,93 @@
       });
     });
   </script>
-  <script>
-  // ==================== SCRIPT DEL CHATBOT MANGOLANGO ====================
-  const bubble = document.getElementById('mango-bubble');
-  const chatWindow = document.getElementById('chat-window');
-  const chatBody = document.getElementById('chat-body');
-  const input = document.getElementById('chat-input');
-  const sendBtn = document.getElementById('send-btn');
-  const closeBtn = document.getElementById('close-chat');
+<script>
+// ==================== MANGOLANGO - GATO CON SENTIMIENTOS Y EMOCIONES ====================
+const bubble = document.getElementById('mango-bubble');
+const chatWindow = document.getElementById('chat-window');
+const chatBody = document.getElementById('chat-body');
+const input = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-btn');
+const closeBtn = document.getElementById('close-chat');
 
-  function getBotResponse(message) {
-    const msg = message.toLowerCase().trim();
+let conversationHistory = [];
 
-    if (msg.includes('hola') || msg.includes('buenos') || msg.includes('qué tal')) {
-      return "¡Miau! 🐱 Hola humano, soy MangoLango. ¿Listo para ayudar a que el curso 1° Medio B llegue a Brasil?";
-    }
-    if (msg.includes('precio') || msg.includes('cuesta') || msg.includes('valor') || msg.includes('1000')) {
-      return "Cada número de la rifa cuesta **$1.000 CLP**. ¡Mientras más números compres, más chances de ganar el JBL Go 3!";
-    }
-    if (msg.includes('premio') || msg.includes('jbl') || msg.includes('principal')) {
-      return "🏆 **Premio Principal**: JBL Go 3 impermeable + Set de toallas.<br><br>Además hay muchos premios adicionales: Giftcard $20.000, Kit de aseo, Spa, Completos, Ollas, Palomera, Termo Stanley, AirPods, Teclado + mouse… ¡y más!";
-    }
-    if (msg.includes('cómo participo') || msg.includes('participar') || msg.includes('comprar')) {
-      return "Fácil 🐱:<br>1. Paga por transferencia (datos más abajo) o en efectivo a un vendedor del curso.<br>2. Envía el comprobante por WhatsApp al +56 9 3927 6187.<br>3. ¡Listo! Recibirás tus números por mensaje.";
-    }
-    if (msg.includes('transferencia') || msg.includes('datos') || msg.includes('banco') || msg.includes('rut')) {
-      return "Datos para transferir:<br><strong>Nombre:</strong> Vicente Moreno<br><strong>RUT:</strong> 23.568.213-3<br><strong>Banco:</strong> BCI Mach<br><strong>Tipo:</strong> Cuenta Corriente<br><strong>N° cuenta:</strong> 777923568213<br><strong>Correo:</strong> crazymangu2026@gmail.com<br><br>¡Envía pantallazo por WhatsApp!";
-    }
-    if (msg.includes('gira') || msg.includes('brasil') || msg.includes('viaje')) {
-      return "Vamos a la gira de estudio a **Brasil** 🇧🇷 con todo el curso 1° Medio B del Colegio Nahuelcura. ¡Tu compra nos ayuda a hacer realidad este sueño!";
-    }
-    if (msg.includes('quién eres') || msg.includes('mango') || msg.includes('lango')) {
-      return "Soy MangoLango 🐱, el gato naranja de CrazyMangu. Vicente me creó para ayudarte en esta rifa y responder todas tus dudas 24/7.";
-    }
-    if (msg.includes('cómo vender') || msg.includes('vendedor')) {
-      return "¡Para compañeros que venden! Ve a la página <a href='como-vender/' style='color:#ff9800'>👥 Manual para Vendedores</a>. Ahí está todo explicado paso a paso.";
-    }
-    if (msg.includes('términos') || msg.includes('condiciones')) {
-      return "Revisa los <a href='terminos/' style='color:#ff9800'>📜 Términos y Condiciones</a> completos aquí.";
-    }
-    if (msg.includes('gracias') || msg.includes('thank')) {
-      return "¡De nada! Gracias a ti el curso va a Brasil. 🐱❤️";
-    }
+function getEmotionalResponse(userMessage) {
+  const msg = userMessage.toLowerCase();
+  let response = "";
 
-    return "¡Miau! 🐱 No entendí del todo esa pregunta. Prueba preguntándome sobre:<br>• Precio de los números<br>• Premios<br>• Cómo participar<br>• Datos de transferencia<br>• La gira a Brasil<br><br>¿Qué más quieres saber?";
+  if (msg.includes("hola") || msg.includes("qué tal") || msg.includes("buenos días")) {
+    response = "¡Miau miau! 🐱 ¡Hola humano lindo! Soy MangoLango, el gato oficial de la rifa. ¿Viniste a ayudarnos a llegar a Brasil?";
+  } 
+  else if (msg.includes("comprar") || msg.includes("número") || msg.includes("participar") || msg.includes("1000") || msg.includes("mil")) {
+    response = "¡SÍÍÍÍ! 🐱💃 ¡Me pongo feliz como loco cuando alguien quiere comprar números! Cada número cuesta $1000 CLP. ¿Cuántos quieres comprar? ¡Mientras más, más chances de ganar el JBL Go 3!";
+  } 
+  else if (msg.includes("brasil") || msg.includes("gira") || msg.includes("viaje")) {
+    response = "¡BRASIL! 🇧🇷🐱 ¡Me emociono tanto que quiero saltar por toda la habitación! Vamos con todo el curso 1° Medio B. Tu ayuda es muy importante para que esto sea posible.";
+  } 
+  else if ((msg.includes("no") && (msg.includes("quiero") || msg.includes("interesa") || msg.includes("no me"))) || msg.includes("no voy")) {
+    response = "¡Miau... 😿 Eso me pone un poquito triste y enojado (pero enojado de gato, no de verdad). ¿Seguro que no quieres ayudar aunque sea con un número al curso?";
+  } 
+  else if (msg.includes("premio") || msg.includes("jbl")) {
+    response = "¡El premio principal es el JBL Go 3 impermeable más un set de toallas! 🏆 Hay muchos premios más: giftcard de $20.000, spa, completos, termo Stanley, AirPods... ¡Todo depende de cuántos números se vendan!";
+  }
+  else if (msg.includes("pago") || msg.includes("transferencia") || msg.includes("datos") || msg.includes("rut")) {
+    response = "Puedes pagar por transferencia a Vicente Moreno o en efectivo con un vendedor del curso. Los datos están más abajo en la página. ¡No olvides enviar el pantallazo por WhatsApp!";
+  }
+  else {
+    response = "¡Miau! 🐱 Entiendo lo que dices... Estoy pensando como gato listo 🧠. Cuéntame más para poder ayudarte mejor con la rifa o la gira a Brasil.";
   }
 
-  function addMessage(text, type) {
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `message ${type}`;
-    msgDiv.innerHTML = text;
-    chatBody.appendChild(msgDiv);
-    chatBody.scrollTop = chatBody.scrollHeight;
+  return response;
+}
+
+function addMessage(text, type) {
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `message ${type}`;
+  msgDiv.innerHTML = text;
+  chatBody.appendChild(msgDiv);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function sendMessage() {
+  const text = input.value.trim();
+  if (!text) return;
+
+  addMessage(text, 'user');
+  input.value = '';
+
+  setTimeout(() => {
+    const botReply = getEmotionalResponse(text);
+    addMessage(botReply, 'bot');
+  }, 650);
+}
+
+// Eventos
+bubble.addEventListener('click', () => {
+  chatWindow.classList.add('open');
+  bubble.style.display = 'none';
+  
+  if (chatBody.children.length === 0) {
+    addMessage("¡Miau! 🐱 Hola, soy MangoLango. Estoy muy feliz de que estés aquí. ¿Quieres ayudar al curso a ir a Brasil?", 'bot');
   }
+});
 
-  function sendMessage() {
-    const text = input.value.trim();
-    if (!text) return;
+closeBtn.addEventListener('click', () => {
+  chatWindow.classList.remove('open');
+  bubble.style.display = 'flex';
+});
 
-    addMessage(text, 'user');
-    input.value = '';
+sendBtn.addEventListener('click', sendMessage);
+input.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
 
-    setTimeout(() => {
-      const botReply = getBotResponse(text);
-      addMessage(botReply, 'bot');
-    }, 650);
-  }
-
-  // Eventos
-  bubble.addEventListener('click', () => {
-    chatWindow.classList.add('open');
-    bubble.style.display = 'none';
-  });
-
-  closeBtn.addEventListener('click', () => {
+document.addEventListener('click', (e) => {
+  if (!chatWindow.contains(e.target) && e.target !== bubble && chatWindow.classList.contains('open')) {
     chatWindow.classList.remove('open');
     bubble.style.display = 'flex';
-  });
-
-  sendBtn.addEventListener('click', sendMessage);
-  input.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendMessage();
-  });
-
-  // Cerrar si se hace clic fuera
-  document.addEventListener('click', (e) => {
-    if (!chatWindow.contains(e.target) && e.target !== bubble && chatWindow.classList.contains('open')) {
-      chatWindow.classList.remove('open');
-      bubble.style.display = 'flex';
-    }
-  });
+  }
+});
 </script>
 </body>
 </html>
